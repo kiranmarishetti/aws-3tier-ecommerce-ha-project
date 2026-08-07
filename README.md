@@ -2,27 +2,83 @@
 
 ## 📌 Overview
 
-This project demonstrates the deployment of a Highly Available and Scalable 3-Tier E-Commerce Application on AWS using a production-style architecture. The infrastructure is designed with public and private subnets across multiple Availability Zones to provide high availability, scalability, and secure access.
+This project demonstrates the deployment of a **Highly Available and Scalable 3-Tier E-Commerce Application** on Amazon Web Services (AWS). The application follows a production-style 3-tier architecture with separate frontend and backend tiers deployed across multiple Availability Zones (AZs) to achieve **High Availability, Scalability, Security, and Fault Tolerance**.
 
 ---
 
-## 🏗️ Architecture
+# 🏗️ AWS Architecture Diagram
 
-![Architecture Diagram](architecture/architecture.png)
+![AWS Architecture](architecture/architecture.png)
 
 ---
 
-## 🚀 AWS Services Used
+# 🌐 Architecture Workflow
+
+```text
+                                    Internet
+                                        │
+                                        ▼
+                                 Amazon Route 53
+                                        │
+                                        ▼
+                       Application Load Balancer (ALB)
+                               │                │
+                               ▼                ▼
+              Frontend EC2 (AZ1)          Frontend EC2 (AZ2)
+              Apache HTTP Server          Apache HTTP Server
+                       │                         │
+                       └──────────┬──────────────┘
+                                  │
+                         Apache Reverse Proxy
+                                  │
+                    ┌─────────────┴─────────────┐
+                    ▼                           ▼
+          Backend EC2 (AZ1)           Backend EC2 (AZ2)
+        Python Flask Application   Python Flask Application
+
+                       ▲
+                       │
+              Bastion Host (SSH Access)
+                       │
+                Administrator
+
+------------------------------------------------------------
+
+                 VPC (10.0.0.0/16)
+
+Public Subnet (AZ1)
+• Application Load Balancer
+• Frontend EC2
+• Bastion Host
+• NAT Gateway
+
+Public Subnet (AZ2)
+• Frontend EC2
+
+Private Subnet (AZ1)
+• Backend EC2
+
+Private Subnet (AZ2)
+• Backend EC2
+
+Internet Gateway → Public Subnets
+NAT Gateway → Private Subnets (Outbound Internet)
+```
+
+---
+
+# 🚀 AWS Services Used
 
 - Amazon VPC
-- Public & Private Subnets
+- Public Subnets
+- Private Subnets
 - Amazon EC2
 - Internet Gateway
 - NAT Gateway
 - Route Tables
 - Security Groups
 - Application Load Balancer (ALB)
-- Route 53
+- Amazon Route 53
 - Apache HTTP Server
 - Python Flask
 - Git
@@ -30,7 +86,7 @@ This project demonstrates the deployment of a Highly Available and Scalable 3-Ti
 
 ---
 
-## 🏛️ Architecture Components
+# 🏛️ Architecture Components
 
 - 1 Custom VPC
 - 2 Public Subnets
@@ -38,26 +94,33 @@ This project demonstrates the deployment of a Highly Available and Scalable 3-Ti
 - 1 Internet Gateway
 - 1 NAT Gateway
 - 1 Application Load Balancer
-- 2 Frontend EC2 Instances (Apache)
-- 2 Backend EC2 Instances (Python Flask)
+- 2 Frontend EC2 Instances
+- 2 Backend EC2 Instances
 - 1 Bastion Host
-- Route 53 for Custom Domain Routing
+- Apache Reverse Proxy
+- Amazon Route 53
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
 ```text
 aws-3tier-ecommerce-ha-project/
 │
 ├── README.md
+│
 ├── architecture/
 │   └── architecture.png
+│
+├── screenshots/
+│
 ├── scripts/
 │   ├── frontend-setup.sh
 │   └── backend-setup.sh
+│
 ├── apache/
 │   └── backend-proxy.conf
+│
 └── docs/
     ├── deployment-steps.md
     └── interview-notes.md
@@ -65,70 +128,42 @@ aws-3tier-ecommerce-ha-project/
 
 ---
 
-## ✨ Key Features
+# ✨ Key Features
 
-- Highly Available Multi-AZ Deployment
-- Scalable 3-Tier Architecture
-- Public and Private Subnet Design
+- Highly Available Multi-AZ Architecture
+- Scalable 3-Tier Design
+- Public & Private Subnet Architecture
 - Application Load Balancer
 - Apache Reverse Proxy
 - Python Flask Backend
 - Bastion Host for Secure SSH Access
-- Route 53 Custom Domain
-- Secure Network Architecture
+- Route 53 Domain Routing
+- Secure Network Segmentation
+- Fault-Tolerant Infrastructure
 
 ---
 
-## 🌐 Architecture Workflow
-
-```text
-Internet
-   │
-Route 53
-   │
-Application Load Balancer
-   │
-├───────────────┬───────────────┤
-│                               │
-Frontend EC2 (AZ1)       Frontend EC2 (AZ2)
-(Apache)                 (Apache)
-│                               │
-└───────────────┬───────────────┘
-                │
-      Apache Reverse Proxy
-                │
-├───────────────┬───────────────┤
-│                               │
-Backend EC2 (AZ1)        Backend EC2 (AZ2)
-(Python Flask)           (Python Flask)
-
-Administrator
-      │
-Bastion Host
-      │
-Private Backend Servers
-```
-
----
-
-## 🚀 Deployment Steps
+# 🚀 Deployment Steps
 
 1. Created a Custom VPC.
 2. Created two Public and two Private Subnets.
 3. Configured an Internet Gateway.
 4. Configured a NAT Gateway.
-5. Configured Route Tables.
-6. Launched a Bastion Host.
-7. Deployed Frontend EC2 instances with Apache HTTP Server.
-8. Deployed Backend EC2 instances with Python Flask.
-9. Configured Apache Reverse Proxy.
-10. Configured an Application Load Balancer.
-11. Configured Route 53.
-12. Verified High Availability and End-to-End Application Access.
+5. Configured Public and Private Route Tables.
+6. Configured Security Groups.
+7. Launched a Bastion Host.
+8. Deployed two Frontend EC2 Instances.
+9. Installed Apache HTTP Server.
+10. Deployed two Backend EC2 Instances.
+11. Installed Python and Flask dependencies.
+12. Configured Apache Reverse Proxy.
+13. Configured the Application Load Balancer.
+14. Configured Amazon Route 53.
+15. Verified High Availability and End-to-End Application Access.
 
 ---
 
-## 💻 Technologies Used
+# 💻 Technologies Used
 
 - AWS
 - Linux
@@ -140,50 +175,87 @@ Private Backend Servers
 
 ---
 
-## 🎯 Skills Demonstrated
+# 🎯 Skills Demonstrated
 
 - AWS Cloud Architecture
-- VPC Networking
-- High Availability
-- Load Balancing
-- Route 53 DNS Management
+- Amazon VPC
+- Public & Private Networking
 - EC2 Administration
 - Linux Administration
+- High Availability
+- Application Load Balancer
+- Route 53 DNS
 - Apache Reverse Proxy
 - Cloud Security
 - Multi-Tier Application Deployment
 
 ---
 
-## 📖 Learning Outcomes
+# 📖 Learning Outcomes
 
-- Designed a Highly Available AWS 3-Tier Architecture
-- Configured Public and Private Subnets
-- Configured Internet Gateway and NAT Gateway
-- Implemented Secure Access using Bastion Host
-- Configured Apache Reverse Proxy
-- Deployed Python Flask Application
-- Configured Application Load Balancer
-- Implemented Route 53 DNS Routing
-
----
-
-## 📸 Note
-
-This project was successfully deployed and tested on AWS. The AWS environment is currently unavailable because the AWS account has been suspended. The deployment scripts, architecture diagram, Apache configuration, and documentation are included in this repository.
+- Designed a Highly Available AWS Infrastructure.
+- Configured Public and Private Subnets.
+- Configured Internet Gateway and NAT Gateway.
+- Configured Security Groups and Route Tables.
+- Implemented Secure SSH Access using a Bastion Host.
+- Deployed Apache HTTP Server.
+- Deployed a Python Flask Application.
+- Configured Apache Reverse Proxy.
+- Configured an Application Load Balancer.
+- Configured Amazon Route 53.
+- Verified End-to-End Application Deployment.
 
 ---
 
-## 👨‍💻 Author
+# 📸 Project Screenshots
+
+The project includes screenshots captured during deployment inside the **screenshots/** folder.
+
+Example screenshots include:
+
+- VPC
+- Public & Private Subnets
+- Route Tables
+- Security Groups
+- EC2 Instances
+- Bastion Host
+- NAT Gateway
+- Application Load Balancer
+- Route 53
+- Application Home Page
+
+---
+
+# 📝 Note
+
+This project was successfully deployed and tested on AWS. The AWS environment is currently unavailable because the AWS account has been suspended. However, the deployment scripts, Apache configuration, architecture diagram, and documentation are available in this repository.
+
+---
+
+# 👨‍💻 Author
 
 **Kiran Marishetti**
 
-Cloud & DevOps Engineer
+**Cloud & DevOps Engineer**
 
-**Skills:** AWS • Azure • Linux • Git • GitHub • Jenkins • Docker • Kubernetes • Terraform • Ansible • Python • Shell Scripting • CI/CD
+**Skills**
+
+- AWS
+- Azure
+- Linux
+- Git
+- GitHub
+- Jenkins
+- Docker
+- Kubernetes
+- Terraform
+- Ansible
+- Python
+- Shell Scripting
+- CI/CD
 
 ---
 
-## 📄 License
+# 📄 License
 
 This project is intended for learning and demonstration purposes.
