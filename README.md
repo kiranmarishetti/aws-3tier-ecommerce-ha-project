@@ -2,7 +2,7 @@
 
 ## 📌 Overview
 
-This project demonstrates the deployment of a **Highly Available and Scalable 3-Tier E-Commerce Application** on AWS. The application is deployed using a secure, production-style architecture with separate frontend and backend tiers, public and private subnets, and load balancing for high availability.
+This project demonstrates the deployment of a Highly Available and Scalable 3-Tier E-Commerce Application on AWS using a production-style architecture. The infrastructure is designed with public and private subnets across multiple Availability Zones to provide high availability, scalability, and secure access.
 
 ---
 
@@ -53,7 +53,6 @@ aws-3tier-ecommerce-ha-project/
 ├── README.md
 ├── architecture/
 │   └── architecture.png
-├── screenshots/
 ├── scripts/
 │   ├── frontend-setup.sh
 │   └── backend-setup.sh
@@ -70,7 +69,7 @@ aws-3tier-ecommerce-ha-project/
 
 - Highly Available Multi-AZ Deployment
 - Scalable 3-Tier Architecture
-- Public & Private Subnet Design
+- Public and Private Subnet Design
 - Application Load Balancer
 - Apache Reverse Proxy
 - Python Flask Backend
@@ -114,22 +113,22 @@ Private Backend Servers
 
 ## 🚀 Deployment Steps
 
-1. Created a custom VPC.
-2. Created two public and two private subnets.
-3. Attached an Internet Gateway.
+1. Created a Custom VPC.
+2. Created two Public and two Private Subnets.
+3. Configured an Internet Gateway.
 4. Configured a NAT Gateway.
-5. Created public and private route tables.
+5. Configured Route Tables.
 6. Launched a Bastion Host.
-7. Deployed two frontend EC2 instances running Apache HTTP Server.
-8. Deployed two backend EC2 instances running a Python Flask application.
-9. Configured Apache Reverse Proxy to forward API requests.
+7. Deployed Frontend EC2 instances with Apache HTTP Server.
+8. Deployed Backend EC2 instances with Python Flask.
+9. Configured Apache Reverse Proxy.
 10. Configured an Application Load Balancer.
-11. Configured Route 53 for custom domain routing.
-12. Verified high availability and application access.
+11. Configured Route 53.
+12. Verified High Availability and End-to-End Application Access.
 
 ---
 
-## 💻 Technologies
+## 💻 Technologies Used
 
 - AWS
 - Linux
@@ -150,53 +149,9 @@ Private Backend Servers
 - Route 53 DNS Management
 - EC2 Administration
 - Linux Administration
-- Reverse Proxy Configuration
+- Apache Reverse Proxy
 - Cloud Security
 - Multi-Tier Application Deployment
-
----
-
-## 📸 Project Screenshots
-
-### Architecture Overview
-
-![Architecture](screenshots/architecture-overview.png)
-
----
-
-### EC2 Instances
-
-![EC2 Instances](screenshots/ec2-instances.png)
-
----
-
-### Bastion Host
-
-![Bastion Host](screenshots/bastion-host.png)
-
----
-
-### Private Subnets
-
-![Private Subnets](screenshots/private-subnets.png)
-
----
-
-### Application Load Balancer
-
-![Load Balancer](screenshots/load-balancer.png)
-
----
-
-### Route 53 Configuration
-
-![Route53](screenshots/route53.png)
-
----
-
-### Application Home Page
-
-![Application](screenshots/application-homepage.png)
 
 ---
 
@@ -204,11 +159,18 @@ Private Backend Servers
 
 - Designed a Highly Available AWS 3-Tier Architecture
 - Configured Public and Private Subnets
+- Configured Internet Gateway and NAT Gateway
 - Implemented Secure Access using Bastion Host
 - Configured Apache Reverse Proxy
 - Deployed Python Flask Application
 - Configured Application Load Balancer
 - Implemented Route 53 DNS Routing
+
+---
+
+## 📸 Note
+
+This project was successfully deployed and tested on AWS. The AWS environment is currently unavailable because the AWS account has been suspended. The deployment scripts, architecture diagram, Apache configuration, and documentation are included in this repository.
 
 ---
 
@@ -224,4 +186,4 @@ Cloud & DevOps Engineer
 
 ## 📄 License
 
-This project is for learning and demonstration purposes.
+This project is intended for learning and demonstration purposes.
