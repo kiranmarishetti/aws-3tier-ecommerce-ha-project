@@ -1,4 +1,4 @@
-# 🚀 Highly Available & Scalable 3-Tier E-Commerce Architecture on AWS
+# 🚀 AWS 3-Tier Highly Available & Scalable E-Commerce Application
 
 ## 📌 Overview
 
@@ -8,7 +8,7 @@ This project demonstrates the deployment of a **Highly Available and Scalable 3-
 
 ## 🏗️ Architecture
 
-![Architecture Diagram](architecture/architecture-diagram.png)
+![Architecture Diagram](architecture/architecture.png)
 
 ---
 
@@ -30,6 +30,21 @@ This project demonstrates the deployment of a **Highly Available and Scalable 3-
 
 ---
 
+## 🏛️ Architecture Components
+
+- 1 Custom VPC
+- 2 Public Subnets
+- 2 Private Subnets
+- 1 Internet Gateway
+- 1 NAT Gateway
+- 1 Application Load Balancer
+- 2 Frontend EC2 Instances (Apache)
+- 2 Backend EC2 Instances (Python Flask)
+- 1 Bastion Host
+- Route 53 for Custom Domain Routing
+
+---
+
 ## 📂 Project Structure
 
 ```text
@@ -37,7 +52,7 @@ aws-3tier-ecommerce-ha-project/
 │
 ├── README.md
 ├── architecture/
-│   └── architecture-diagram.png
+│   └── architecture.png
 ├── screenshots/
 ├── scripts/
 │   ├── frontend-setup.sh
@@ -141,19 +156,59 @@ Private Backend Servers
 
 ---
 
-## 📸 Screenshots
+## 📸 Project Screenshots
 
-Store your screenshots inside the `screenshots` folder.
+### Architecture Overview
 
-Example:
+![Architecture](screenshots/architecture-overview.png)
 
-- EC2 Instances
-- VPC
-- Public & Private Subnets
-- Bastion Host
-- Application Load Balancer
-- Route 53
-- Application Home Page
+---
+
+### EC2 Instances
+
+![EC2 Instances](screenshots/ec2-instances.png)
+
+---
+
+### Bastion Host
+
+![Bastion Host](screenshots/bastion-host.png)
+
+---
+
+### Private Subnets
+
+![Private Subnets](screenshots/private-subnets.png)
+
+---
+
+### Application Load Balancer
+
+![Load Balancer](screenshots/load-balancer.png)
+
+---
+
+### Route 53 Configuration
+
+![Route53](screenshots/route53.png)
+
+---
+
+### Application Home Page
+
+![Application](screenshots/application-homepage.png)
+
+---
+
+## 📖 Learning Outcomes
+
+- Designed a Highly Available AWS 3-Tier Architecture
+- Configured Public and Private Subnets
+- Implemented Secure Access using Bastion Host
+- Configured Apache Reverse Proxy
+- Deployed Python Flask Application
+- Configured Application Load Balancer
+- Implemented Route 53 DNS Routing
 
 ---
 
@@ -164,3 +219,9 @@ Example:
 Cloud & DevOps Engineer
 
 **Skills:** AWS • Azure • Linux • Git • GitHub • Jenkins • Docker • Kubernetes • Terraform • Ansible • Python • Shell Scripting • CI/CD
+
+---
+
+## 📄 License
+
+This project is for learning and demonstration purposes.
