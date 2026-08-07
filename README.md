@@ -6,68 +6,13 @@ This project demonstrates the deployment of a **Highly Available and Scalable 3-
 
 ---
 
-# 🏗️ AWS Architecture Diagram
+## 🏗️ AWS Architecture Diagram
 
 ![AWS Architecture](architecture/architecture.png)
 
 ---
 
-# 🌐 Architecture Workflow
-
-```text
-                                    Internet
-                                        │
-                                        ▼
-                                 Amazon Route 53
-                                        │
-                                        ▼
-                       Application Load Balancer (ALB)
-                               │                │
-                               ▼                ▼
-              Frontend EC2 (AZ1)          Frontend EC2 (AZ2)
-              Apache HTTP Server          Apache HTTP Server
-                       │                         │
-                       └──────────┬──────────────┘
-                                  │
-                         Apache Reverse Proxy
-                                  │
-                    ┌─────────────┴─────────────┐
-                    ▼                           ▼
-          Backend EC2 (AZ1)           Backend EC2 (AZ2)
-        Python Flask Application   Python Flask Application
-
-                       ▲
-                       │
-              Bastion Host (SSH Access)
-                       │
-                Administrator
-
-------------------------------------------------------------
-
-                 VPC (10.0.0.0/16)
-
-Public Subnet (AZ1)
-• Application Load Balancer
-• Frontend EC2
-• Bastion Host
-• NAT Gateway
-
-Public Subnet (AZ2)
-• Frontend EC2
-
-Private Subnet (AZ1)
-• Backend EC2
-
-Private Subnet (AZ2)
-• Backend EC2
-
-Internet Gateway → Public Subnets
-NAT Gateway → Private Subnets (Outbound Internet)
-```
-
----
-
-# 🚀 AWS Services Used
+## 🚀 AWS Services Used
 
 - Amazon VPC
 - Public Subnets
@@ -86,7 +31,7 @@ NAT Gateway → Private Subnets (Outbound Internet)
 
 ---
 
-# 🏛️ Architecture Components
+## 🏛️ Architecture Components
 
 - 1 Custom VPC
 - 2 Public Subnets
@@ -94,33 +39,28 @@ NAT Gateway → Private Subnets (Outbound Internet)
 - 1 Internet Gateway
 - 1 NAT Gateway
 - 1 Application Load Balancer
-- 2 Frontend EC2 Instances
-- 2 Backend EC2 Instances
+- 2 Frontend EC2 Instances (Apache HTTP Server)
+- 2 Backend EC2 Instances (Python Flask)
 - 1 Bastion Host
 - Apache Reverse Proxy
 - Amazon Route 53
 
 ---
 
-# 📂 Project Structure
+## 📂 Project Structure
 
 ```text
 aws-3tier-ecommerce-ha-project/
 │
 ├── README.md
-│
 ├── architecture/
 │   └── architecture.png
-│
 ├── screenshots/
-│
 ├── scripts/
 │   ├── frontend-setup.sh
 │   └── backend-setup.sh
-│
 ├── apache/
 │   └── backend-proxy.conf
-│
 └── docs/
     ├── deployment-steps.md
     └── interview-notes.md
@@ -128,7 +68,7 @@ aws-3tier-ecommerce-ha-project/
 
 ---
 
-# ✨ Key Features
+## ✨ Key Features
 
 - Highly Available Multi-AZ Architecture
 - Scalable 3-Tier Design
@@ -143,27 +83,25 @@ aws-3tier-ecommerce-ha-project/
 
 ---
 
-# 🚀 Deployment Steps
+## 🚀 Deployment Steps
 
 1. Created a Custom VPC.
-2. Created two Public and two Private Subnets.
+2. Created two Public Subnets and two Private Subnets.
 3. Configured an Internet Gateway.
-4. Configured a NAT Gateway.
+4. Created a NAT Gateway for Private Subnets.
 5. Configured Public and Private Route Tables.
 6. Configured Security Groups.
 7. Launched a Bastion Host.
-8. Deployed two Frontend EC2 Instances.
-9. Installed Apache HTTP Server.
-10. Deployed two Backend EC2 Instances.
-11. Installed Python and Flask dependencies.
-12. Configured Apache Reverse Proxy.
-13. Configured the Application Load Balancer.
-14. Configured Amazon Route 53.
-15. Verified High Availability and End-to-End Application Access.
+8. Deployed two Frontend EC2 Instances with Apache HTTP Server.
+9. Deployed two Backend EC2 Instances with Python Flask.
+10. Configured Apache Reverse Proxy.
+11. Configured the Application Load Balancer (ALB).
+12. Configured Amazon Route 53 for custom domain routing.
+13. Verified end-to-end application deployment and High Availability.
 
 ---
 
-# 💻 Technologies Used
+## 💻 Technologies Used
 
 - AWS
 - Linux
@@ -175,7 +113,7 @@ aws-3tier-ecommerce-ha-project/
 
 ---
 
-# 🎯 Skills Demonstrated
+## 🎯 Skills Demonstrated
 
 - AWS Cloud Architecture
 - Amazon VPC
@@ -191,12 +129,12 @@ aws-3tier-ecommerce-ha-project/
 
 ---
 
-# 📖 Learning Outcomes
+## 📖 Learning Outcomes
 
 - Designed a Highly Available AWS Infrastructure.
 - Configured Public and Private Subnets.
 - Configured Internet Gateway and NAT Gateway.
-- Configured Security Groups and Route Tables.
+- Configured Route Tables and Security Groups.
 - Implemented Secure SSH Access using a Bastion Host.
 - Deployed Apache HTTP Server.
 - Deployed a Python Flask Application.
@@ -207,11 +145,9 @@ aws-3tier-ecommerce-ha-project/
 
 ---
 
-# 📸 Project Screenshots
+## 📸 Project Screenshots
 
-The project includes screenshots captured during deployment inside the **screenshots/** folder.
-
-Example screenshots include:
+The repository includes screenshots captured during deployment in the **screenshots/** folder, including:
 
 - VPC
 - Public & Private Subnets
@@ -226,36 +162,22 @@ Example screenshots include:
 
 ---
 
-# 📝 Note
+## 📝 Note
 
-This project was successfully deployed and tested on AWS. The AWS environment is currently unavailable because the AWS account has been suspended. However, the deployment scripts, Apache configuration, architecture diagram, and documentation are available in this repository.
+This project was successfully deployed and tested on AWS. The AWS environment is currently unavailable because the AWS account has been suspended. The deployment scripts, Apache configuration, architecture diagram, and documentation are included in this repository.
 
 ---
 
-# 👨‍💻 Author
+## 👨‍💻 Author
 
 **Kiran Marishetti**
 
 **Cloud & DevOps Engineer**
 
-**Skills**
-
-- AWS
-- Azure
-- Linux
-- Git
-- GitHub
-- Jenkins
-- Docker
-- Kubernetes
-- Terraform
-- Ansible
-- Python
-- Shell Scripting
-- CI/CD
+**Skills:** AWS • Azure • Linux • Git • GitHub • Jenkins • Docker • Kubernetes • Terraform • Ansible • Python • Shell Scripting • CI/CD
 
 ---
 
-# 📄 License
+## 📄 License
 
 This project is intended for learning and demonstration purposes.
